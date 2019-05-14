@@ -9,7 +9,6 @@ const countryKey = {
 export function fetchNews(selectedCountry) {
   const URL = `https://newsapi.org/v2/top-headlines?country=${countryKey[selectedCountry]}&category=business&apiKey=${API_KEY}`;
 
-  console.log(URL);
   return fetch(URL)
     .then(res => res.json())
     .then(data => {

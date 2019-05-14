@@ -34,3 +34,31 @@ li {
   text-decoration: none;
   color: inherit;
 }
+
+.avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 3px;
+  margin: 0 auto;
+  display: block;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.space-around {
+  justify-content: space-around;
+}
+
+.news {
+  margin: 10px 0;
+  padding: 20px;
+  width: 70%;
+}
+
+.bg-light {
+  background: rgba(0, 0, 0, 0.08);
+  border-radius: 3px;
+}
