@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { fetchNews } from '../utils/api';
+import { FaUser, FaHandPointRight } from 'react-icons/fa';
 
 function CountryNav({ selected, onUpdateCountry }) {
   const countries = ['Japan', 'US', 'Taiwan', 'China'];
@@ -46,12 +47,17 @@ function CategoryNav({ selected, onUpdateCategory }) {
   )
 }
 
+CategoryNav.propTypes = {
+  selected: PropTypes.string.isRequired,
+  onUpdateCategory: PropTypes.func.isRequired
+};
+
 function NewsDisplay({ newsList }) {
   console.log(newsList)
   return (
     <ul className='grid space-around'>
       {newsList.map((news, index) => {
-        const { author, title, description, url, urlToImage, publishedAt } = news;
+        const { author, title, description, url, urlToImage, publishedAt, source } = news;
         const date = new Date(publishedAt).toLocaleDateString('en-US', {
           timeZone: 'Asia/Tokyo',
           weekDay: 'long',
@@ -65,9 +71,15 @@ function NewsDisplay({ newsList }) {
         return (
           <li key={ url } className='bg-light news'>
             <h3>{ title }</h3>
-            <p>Published by <strong>{ !author ? 'Anonymous' : author }</strong> at <em>{ date }</em></p>
+            <div>
+              <span>Published by </span>
+              <span><FaUser color='rgb(53, 148, 242)'/><strong>{ !author ? 'Anonymous' : author }</strong></span>
+              <span> from </span>
+              <a href={ source.name }>{ source.name }</a>
+              <span className='meta-date'> at { date }</span>
+            </div>
             <p>{ description }</p>
-            <a href={ url } target="_blank">Read more at</a>
+            <p><a href={ url } target="_blank">Read more at </a><FaHandPointRight size={20} /></p>
           </li>
         );
       })}

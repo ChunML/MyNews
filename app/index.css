@@ -79,6 +79,15 @@ li {
 }
 
 .bg-light {
-  background: rgb(230, 228, 200);
+  background: rgba(128, 128, 128, 0.2);
   border-radius: 3px;
+}
+
+.meta-date {
+  font-style: italic;
+  color: #808080;
+}
+
+svg {
+  margin: 0 5px;
 }
